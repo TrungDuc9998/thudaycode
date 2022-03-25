@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RootScope</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myapp">
+  <div class="container">
+    <div ng-controller=myctrl1>
+      <div class="form-group">
+        <strong>Họ và tên</strong>
+        <input ng-model="student.fullname" class="form-control">
+      </div>
+      <div class="form-group">
+        <strong>Ngày sinh</strong>
+        <input ng-model="student.birthday" class="form-control">
+      </div>
+      <div class="form-group">
+        <strong>Điểm</strong>
+        <input ng-model="student.mark" class="form-control">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-default" ng-click="save()">Lưu</button>
+        <button class="btn btn-default" ng-click="cancel()">Huỷ</button>
+      </div>
+    </div>
+    <div ng-controller="myctrl2">
+      <table class="table">
+        <tr>
+          <th>Họ và tên</th>
+          <th>Ngày sinh</th>
+          <th>Điểm</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>{{students[0].fullname}}</td>
+          <td>{{students[0].birthday}}</td>
+          <td>{{students[0].mark}}</td>
+          <td>
+            <a href="" ng-click="edit(0)">Edit</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script>
+    var app=angular.module('myapp',[]);
+    app.controller('myctrl2',function($scope,$rootScope){
+      $rootScope.students=[
+        {
+          fullname: 'Nguyễn Văn Tèo',
+          birthday: '20-01-1995',
+          mark: 9
+        },
+        {
+          fullname: 'Phạm Thị Nở',
+          birthday: '15-11-1985',
+          mark: 9.7
+        },
+      ]
+      $rootScope.edit=function(index){
+        $rootScope.index=index;
+        $rootScope.student =angular.copy($rootScope.students[index])
+      } 
+    })
+
+    app.controller('myctrl1',function($scope,$rootScope){
+      $rootScope.save=function(){
+        $rootScope.students[$rootScope.index]=$rootScope.student;
+      }
+      $rootScope.cancel=function(){
+        $rootScope.student=angular.copy($rootScope.students[$rootScope.index]);
+      }
+    })
+  </script>
+</body>
+</html>

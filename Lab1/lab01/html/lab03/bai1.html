@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+      .carousel-inner img{
+        max-width: 95%;
+        height: 300px;
+        margin :0 auto;
+       
+      }
+      .carousel-caption p{
+        color: rgb(17, 17, 19);
+        font-size: 20px;
+        font-style:italic;
+      }
+      .poly-card{
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .poly-card ul{
+        margin-top: 10px;
+      }
+      .poly-card ul li{
+        list-style-type:none;
+      }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
+  </head>
+  <body>
+      <div class="container" style="height: 100px;">
+        <div class="row">
+          <article class="col-sm-9" style=" height: 800px;">
+            <div style="margin-top: 20px;" >
+              <div class="jumbotron" >
+                <fieldset>
+                  <legend>FRONT-END FRAMEWORKS</legend>
+                  <ul class="list-unstyled">
+                    <li>Bootstrap là một framework cho phép thiết kế website reponsive nhanh hơn và dễ ràng hơn</li>
+                    <li>AngularJS được biết đến là một framework được phát triển trên nền tảng Javascript dùng để
+                      khởi tạo các ứng dụng RIA
+                    </li>
+                    <li><button class="btn btn-sm btn-primary">Xem thêm...</button></li>
+                  </ul>
+                </fieldset>
+              </div>
+            </div>
+            <div style="background-color: rgb(177, 165, 165); margin-top: 10px; height: 300px;" class="card">
+              <div id="carouselId" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselId" data-slide-to="1"></li>
+                  <li data-target="#carouselId" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="carousel-item active text-center">
+                    <img src="../images/products/1017.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">              
+                      <p>ảnh số 1</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item text-center">
+                    <img src="../images/products/1018.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">              
+                      <p>ảnh số 2</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item text-center">
+                    <img src="../images/products/1020.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">                  
+                      <p>Vòng đeo tay sản phẩm tại Pháp</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev" >
+                  <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </article>
+          <div class="col-sm-3" >
+            <div class="card poly-card">
+              <div class="row">
+                <div class="col-sm-3">
+                  <img src="../images/shoppingcart.gif" width="70px" style="margin-left:15px;"/>
+                </div>
+                <div class="col-sm-7">
+                  <ul>
+                    <li>100 item</li>
+                    <li>$56.8</li>
+                    <li><a href="">VIEW CARD</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card find" style="height: 50px;margin-bottom: 20px;">
+              <form>
+                <input placeholder="search" class="form-control" style="margin-top: 13px; width: 230px;margin-left: 10px;">
+              </form>
+            </div>
+            <div class="card list">
+              <div class="card-header" style="cursor: pointer;" data-toggle="collapse" href="#chungloai">
+                <span class="glyphicon glyphicon-th-list" > </span> Chủng loại
+              </div>
+              <div class="list-group card-collapse" id="chungloai">
+                <a href="" class="list-group-item">Điện thoại</a>
+                <a href="" class="list-group-item">Máy tính bảng</a>
+                <a href="" class="list-group-item">Điện thoại Iphone</a>
+                <a href="" class="list-group-item">Máy tính xách tay</a>
+                <a href="" class="list-group-item">Ti vi</a>
+                <a href="" class="list-group-item">Tủ lạnh</a>
+              </div>
+            </div>
+            
+            <div class="card list"  style="margin-top:20px;cursor:pointer" data-toggle="collapse" href="#ncc">
+              <div class="card-header">
+                <span class="glyphicon glyphicon-th"></span> Nhà cung cấp
+              </div>
+              <div class="list-group" id="ncc">
+                <a href="" class="list-group-item">Microsoft</a>
+                <a href="" class="list-group-item">Apple</a>
+                <a href="" class="list-group-item">Linux</a>
+              </div>
+            </div>
+            <div class="card list" data-toggle="collapse" href="#hang" style="margin-top: 20px;cursor:pointer;">
+              <div class="card-header">
+                <span class="glyphicon glyphicon-star-empty"></span> Hàng đặc biệt
+            </div>
+            <div class="list-group" id="hang">     
+              <a href="" class="list-group-item"> OPPO</a>
+              <a href="" class="list-group-item"> IPHONE</a>
+              <a href="" class="list-group-item"> VIVO</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

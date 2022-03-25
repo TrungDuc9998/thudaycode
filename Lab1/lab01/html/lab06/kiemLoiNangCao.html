@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm lỗi nâng cao</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        input.ng-invalid{
+            background-image: url(../images/products/error.png);
+            background-position: center right;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl" style="width:600px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">THÔNG TIN SINH VIÊN</h2>
+            </div>
+            <form class="panel-body" name="frmBonus">
+                <div class="form-group">
+                    <strong>Họ và tên</strong>
+                    <input class="form-control"  ng-model="fullname" name="txtFullname" required>
+                    <span ng-show="frmBonus.txtFullname.$invalid">Vui lòng nhập họ và tên</span>
+                </div>
+                <div class="form-group">
+                    <strong>Điểm</strong>
+                    <input class="form-control" ng-model="mark" name="txtMark" type="number" min="0" max="10" >
+                    <span ng-show="frmBonus.txtMark.$invalid">Điểm phải từ 0 đến 10</span>
+                </div>
+                <div class="form-group">
+                    <strong>Email</strong>
+                    <input class="form-control" ng-model="email" name="txtEmail" type=email >
+                    <span ng-show="frmBonus.txtEmail.$invalid">Không đúng định dạng email</span>
+                </div>
+                <div class="form-group">
+                    <strong>Số xe</strong>
+                    <input class="form-control" ng-model="so" name="txtlicenseplates" pattern="5\d-[A-Z]\d-((\d{4})|(\d{3}\.\d{2}))" >
+                    <span ng-show="frmBonus.txtlicenseplates.$invalid">Không đúng số xe Sài Gòn</span>
+                </div>
+                
+            </form>
+            <div class="panel-footer">
+                <button  class="btn btn-default">Lưu</button>
+                <span ng-show="frmBonus.$valid" >Chúc mừng bạn đã nhập đúng</span>
+                
+              
+            </div>
+        </div>
+    </div>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('myctrl',function($scope){
+
+        });
+    </script>
+</body>
+</html>

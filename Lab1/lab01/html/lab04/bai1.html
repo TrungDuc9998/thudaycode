@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="myctrl">
+        <img src="{{user.photo}}"/>
+       <ul>
+           <li>Họ và Tên: {{user.fullname}}</li>
+           <li>Ngày sinh: {{user.birthday}}</li>
+           <li>Giới tính: {{user.gender}}</li>
+           <li>Điển trung bình: {{user.mark}}</li>
+       </ul>
+    </div>
+    <script>
+        angular.module('myapp',[]).controller('myctrl',function($scope){
+            $scope.user= {
+                fullname: 'Nguyễn Văn Tèo',
+                birthday: '20-01-1995',
+                gender:'Nam',
+                photo:'../images/products/1017.jpg',
+                mark: 9.5
+            };
+        });
+     </script>
+</body>
+</html>

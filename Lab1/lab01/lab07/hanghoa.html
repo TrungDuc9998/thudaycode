@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Định dạng số liệu</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl" style="width:600px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">DANH SÁCH HÀNG TẠP HOÁ</h2>
+            </div>
+            <div class="form-group">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>sản phẩm</th>
+                            <th>đơn giá</th>
+                            <th>giảm giá</th>
+                            <th>ngày</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="p in products">
+                            <td>{{p.name|uppercase}}</td>
+                            <td>{{p.price|currency}}</td>
+                            <td>{{p.discount|number:2}}</td>
+                            <td>{{p.date|date:"MMMM-dd,yyyy"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../lab07/js/prods.js"></script>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('myctrl',function($scope){
+            $scope.products=list;
+        });
+    </script>
+</body>
+</html>

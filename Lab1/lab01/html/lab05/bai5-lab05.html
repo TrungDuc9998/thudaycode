@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Xây dựng trang sản phẩm</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myapp" class="container"> 
+  <div ng-controller="myctrl">
+    <div class="col-md-3" ng-repeat="pr in products">
+      <div class="panel panel-primary text-center">
+        <div class="panel-heading">{{pr.name}}</div>
+        <div class="panel-body">
+          <img src="{{pr.image}}" width="80px" height="80px">
+        </div>
+        <div class="panel-footer">${{pr.price}}</div>
+      </div> 
+    </div>
+    </div>
+  </div>
+  <script>
+    var app=angular.module('myapp',[]);
+    app.controller('myctrl',function($scope){
+      $scope.products=[
+        {
+          name: 'Đồng hồ Thuỵ sĩ',
+          image: '../images/products/1001.jpg',
+          price:1200
+        },
+        {
+          name: 'Dell Star X',
+          image: '../images/products/1003.jpg',
+          price: 700
+        },
+        {
+          name: 'Soni Vavo 2017',
+          image: '../images/products/1004.jpg',
+          price:1700
+        },
+        {
+          name: 'Máy ảnh cano',
+          image: '../images/products/1005.jpg',
+          price:1200
+        },
+        {
+          name: 'Vòng cưới France',
+          image: '../images/products/1009.jpg',
+          price:7000
+        },
+        {
+          name: 'Motorola thế hệ 5',
+          image: '../images/products/1011.jpg',
+          price:900
+        },
+        {
+          name: 'Mũ cao bồi Mexico',
+          image: '../images/products/1014.jpg',
+          price:100
+        },
+        {
+          name: 'Nước hoa Korea',
+          image: '../images/products/1023.jpg',
+          price:600
+        }
+      ]
+    })
+  </script>
+</body>
+</html>

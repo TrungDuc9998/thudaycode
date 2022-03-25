@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhúng file</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"/>
+</head>
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl" >
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">DANH SÁCH SẢN PHẨM</h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th><a href="#" ng-click="sortBy('name')">SẢN PHẨM</a></th>
+                            <th> <a href="#" ng-click="sortBy('price')">ĐƠN GIÁ</a> </th>
+                            <th> <a href="#" ng-click="sortBy('discount')">GIẢM GIÁ</a></th>
+                            <th><a href="#" ng-click="sortBy('date')">NGÀY</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="p in products|orderBy:pro|limitTo:8:begin">
+                            <td>{{p.name|uppercase}}</td>
+                            <td>{{p.price|currency}}</td>
+                            <td>{{p.discount|percentage}}</td>
+                            <td>{{p.date|date:"MMMM-dd,yyyy"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+               <ul class="pager">
+                   <li><a href="#" ng-click="first()">
+                       <span class="glyphicon glyphicon-hand-up"></span>
+                   </a></li>
+                   <li><a href="#" ng-click="prev()">
+                    <span class="glyphicon glyphicon-hand-left"></span>
+                    </a></li>
+                    <li><a href="#" ng-click="next()">
+                        <span class="glyphicon glyphicon-hand-right"></span>
+                    </a></li>
+                    <li><a href="#" ng-click="last()">
+                        <span class="glyphicon glyphicon-hand-down"></span>
+                    </a></li>
+               </ul>
+            </div>
+        </div>
+       
+        <script>
+            var app=angular.module('myapp',[]);
+            app.controller('myctrl',function($scope,$http){
+                $scope.products=[];
+                $http.get("./js/prods2.js").then(function(response){
+                    $scope.products=response.data;
+                });
+                // $scope.pro="name";
+                // $scope.sortBy=function (pro) {
+                //     $scope.pro=pro;
+                // }
+                // $scope.begin=0;
+                // $scope.pageCount=Math.ceil($scope.products.length/8);
+                // $scope.first=function(){
+                //     $scope.begin=0;
+                // }
+                // $scope.last=function(){
+                //     $scope.begin=($scope.pageCount-1)*8;
+                // }
+                // $scope.next=function(){
+                //     if($scope.begin<($scope.pageCount-1)*8){
+                //         $scope.begin+=8;
+                //     }
+                // }
+                // $scope.prev=function(){
+                //     if($scope.begin>0){
+                //         $scope.begin-=8;
+                //     }
+                // }
+            });
+           app.filter("percentage",function($filter){
+               return function(input,decimals){
+                   return $filter('number')(input*100,decimals)+"%"
+               }
+           })
+        </script>
+    </div>
+</body>
+</html>

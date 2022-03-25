@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm lỗi tuỳ biến</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myapp">
+    <div class="container" ng-contrller="myctrl" style="width:600px">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">CUSTOM VALIDATION</h2>
+            </div>
+            <form class="panel-body" name="frmUse">
+                <div class="form-group">
+                    <strong>Số poly</strong>
+                    <input class="form-control" type="number" name="txtNumber" ng-model="number" poly-number>
+                    <span ng-show='frmUse.txtNumber.$invalid'>Số này không chia hết cho 2 và 9</span>
+                </div>
+            </form>
+            <div class="panel-footer">
+                <button class="btn btn-default">Kiểm tra</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var app=angular.module("myapp",[]);
+        app.directive("polyNumber",function(){
+            return{
+                require: "ngModel",
+                link: function(scope,element,attr,mCtrl){
+                    mCtrl.$parsers.push(function(value){
+                        var number=parseInt(value);
+                        if(number%2==0&&number%9==0){
+                            mCtrl.$setValidity('charE',true);
+                        }else{
+                            mCtrl.$setValidity('charE',false);
+                        }
+                        return value;
+                    });
+                }   
+            }
+        });
+        app.controller("myctrl",function($scope){
+
+        });
+    </script>
+</body>
+</html>

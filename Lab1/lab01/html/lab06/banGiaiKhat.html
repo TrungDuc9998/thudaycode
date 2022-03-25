@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây dựng form bán hàng giải khát</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body ng-app="myapp">
+    <div class="container" ng-controller="myctrl">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">BÁN HÀNG GIẢI KHÁT</h2>
+            </div>
+            <div class="panel-body"  style="padding:0px;">
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th>TÊN HÀNG</th>
+                        <th>SỐ LƯỢNG</th>
+                        <th>ĐƠN GIÁ</th>
+                        <th>THÀNH TIỀN</th>
+                    </tr>
+                    <tr ng-repeat="item in items" ng-init="item.quantity=1">
+                        <td> 
+                            <input type="checkbox" ng-model="item.buy"/>
+                        </td>
+                        <td ng-bind="item.name"></td>
+                        <td>
+                            <input type="number" ng-model="item.quantity" ng-disabled="!item.buy">
+                        </td>
+                        <td ng-bind="item.price|currency"></td>
+                        <td ng-bind="item.price*item.quantity|currency"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <strong>TỔNG TIỀN:</strong><i><strong>{{getAmount()|currency}}</strong></i>
+            </div>
+        </div>
+    </div>
+    <script>
+        var app=angular.module('myapp',[]);
+        app.controller('myctrl',function($scope){
+            $scope.items=[
+                {
+                    name :  'Nước ngọt',
+                    price: 10000
+                },
+                {
+                    name :  'Cà phê đen',
+                    price: 12000
+                },
+                {
+                    name :  'Thuốc lá',
+                    price: 18000
+                }
+            ];
+
+            $scope.getAmount=function(){
+                var amount=0;
+                for(var i=0;i<$scope.items.length;i++){
+                    if($scope.items[i].buy){
+                        amount+= $scope.items[i].price*$scope.items[i].quantity;
+                    }
+                }
+                return amount;
+            }
+        })
+    </script>
+</body>
+</html>
